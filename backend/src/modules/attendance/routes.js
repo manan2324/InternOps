@@ -2,7 +2,7 @@
 const direct = require('../../middleware/directManager');
 const ownership = require('../../middleware/ownership');
 const repo = require('./repository');
-const { createAuditLog } = require('../../utils/audit');
+const { createAuditLog, extractRequestInfo } = require('../../utils/audit');
 const { sendNotification } = require('../notifications/repository');
 
 async function routes(fastify) {
@@ -12,7 +12,7 @@ async function routes(fastify) {
     const att = await repo.markAttendance(user_id, req.user.id, date, status, remarks);
     await createAuditLog({
       userId: req.user.id,
-      action: 'ATTENDANCE_MARKED',
+      ...extractRequestInfo(req), action: 'ATTENDANCE_MARKED',
       resourceType: 'attendance',
       resourceId: att.id,
       details: { target: user_id, date, status, remarks },
@@ -37,3 +37,4 @@ async function routes(fastify) {
 }
 
 module.exports = routes;
+
