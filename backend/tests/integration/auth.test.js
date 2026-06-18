@@ -32,7 +32,11 @@ afterAll(async () => {
 });
 
 function authHeaders(extra) {
-  return { 'X-CSRF-Token': csrfToken, 'Content-Type': 'application/json', ...extra };
+  return {
+    'X-CSRF-Token': csrfToken,
+    'Content-Type': 'application/json',
+    ...extra,
+  };
 }
 
 function inject(method, url, opts = {}) {
@@ -154,7 +158,10 @@ describe('Auth Integration Tests', () => {
         method: 'POST',
         url: '/api/departments',
         cookies: { 'csrf-token': csrfCookieValue },
-        headers: { Authorization: `Bearer ${freshAccessToken}`, 'Content-Type': 'application/json' },
+        headers: {
+          Authorization: `Bearer ${freshAccessToken}`,
+          'Content-Type': 'application/json',
+        },
         payload: { name: 'Test' },
       });
       expect(res.statusCode).toBe(403);
