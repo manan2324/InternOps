@@ -4,7 +4,11 @@ const rbac = require('../../middleware/rbac');
 const { bruteForceCheck } = require('../../middleware/bruteForce');
 const auth = require('../../middleware/auth');
 const audit = require('../../utils/audit');
-const { generateToken, rotateSession, rotateAndSetCsrf } = require('../../middleware/csrf');
+const {
+  generateToken,
+  rotateSession,
+  rotateAndSetCsrf,
+} = require('../../middleware/csrf');
 const { verifyEmail, sendVerificationEmail } = require('./verificationService');
 const repo = require('./repository');
 const { forgotPassword, resetPassword } = require('./resetService');
