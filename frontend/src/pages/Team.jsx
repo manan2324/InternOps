@@ -1154,8 +1154,9 @@ export default function Team() {
 
   const exportCsv = async () => {
     try {
-
-      const res = await api.get('/team/members/export', { responseType: 'blob' });
+      const res = await api.get('/team/members/export', {
+        responseType: 'blob',
+      });
       const url = window.URL.createObjectURL(new Blob([res.data]));
       const a = document.createElement('a');
 
@@ -1165,8 +1166,8 @@ export default function Team() {
 
       window.URL.revokeObjectURL(url);
     } catch (err) {
-        console.error('CSV export failed:', err);
-        alert('Failed to export team members. Please try again.');
+      console.error('CSV export failed:', err);
+      alert('Failed to export team members. Please try again.');
     }
   };
 
