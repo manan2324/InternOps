@@ -102,7 +102,7 @@ async function getTasks(filters, userId, userRole, page = 1, limit = 50) {
     LIMIT $${params.length - 1}
     OFFSET $${params.length}
   `;
-  
+
   return (await pool.query(q, params)).rows;
 }
 async function submitProof(

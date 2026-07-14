@@ -273,13 +273,13 @@ module.exports = async function socialTasksRoutes(fastify) {
       preHandler: [auth],
     },
     async (req) => {
-        return repo.getTasks(
-          req.query || {},
-          req.user.id,
-          req.user.role,
-          req.query.page,
-          req.query.limit
-        );
+      return repo.getTasks(
+        req.query || {},
+        req.user.id,
+        req.user.role,
+        req.query.page,
+        req.query.limit
+      );
     }
   );
 
