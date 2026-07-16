@@ -159,4 +159,8 @@ module.exports = {
     rateLimitWindowMs: parseInt(process.env.EMAIL_RATE_WINDOW, 10) || 60000,
     bounceCheckEnabled: process.env.EMAIL_BOUNCE_CHECK === 'true',
   },
+  sentry: {
+    dsn: process.env.SENTRY_DSN || null,
+    tracesSampleRate: parseFloat(process.env.SENTRY_TRACES_SAMPLE_RATE) || 0.1,
+  },
 };
